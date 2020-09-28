@@ -1,5 +1,11 @@
 package main
 
+/*
+	Comp510
+	Project 2 part 1 written and completed by Huy Le
+		Take in an input and use input for a search query. Pull data from API and decode.
+*/
+
 import (
 	"encoding/json"
 	"fmt"
@@ -9,12 +15,12 @@ import (
 	"regexp"
 )
 
-func main(){
+func main() {
 
 	api := "https://searchly.asuarez.dev/api/v1/song/search"
 
 	// ask for user input and build a query search url
-	fmt.Println("Enter a search part of the lyrics: ")
+	fmt.Println("Enter an artist or song name: ")
 	var userInput string
 	fmt.Scanln(&userInput)
 	queryURl := api + "?query=" + userInput
@@ -24,14 +30,14 @@ func main(){
 	if err != nil {
 		log.Fatal(err)
 	}
-	defer response.Body.Close()				// defer executes at end of function
-	if response.StatusCode != 200 {			//		.Body implements io.Reader
-		log.Fatal("Didn't get 200")		// status code 200 is ok success status response code
+	defer response.Body.Close()     // defer executes at end of function
+	if response.StatusCode != 200 { //		.Body implements io.Reader
+		log.Fatal("Didn't get 200") // status code 200 is ok success status response code
 	}
 
 	// read data from api and assign data to variable to contain []byte values
-	rawData, err := ioutil.ReadAll(response.Body)	// read response variable which contains API data
-	if err != nil{
+	rawData, err := ioutil.ReadAll(response.Body) // read response variable which contains API data
+	if err != nil {
 		log.Fatal(err)
 	}
 
@@ -39,7 +45,7 @@ func main(){
 	var data SongData
 	json.Unmarshal(rawData, &data) // decode body of byte[] into interface
 
-	reg, _ := regexp.Compile("-")		// variable function to remove dash primarily between the artist and song
+	reg, _ := regexp.Compile("-") // variable function to remove dash primarily between the artist and song
 
 	// print out results
 	for i := 0; i < len(data.Response.Result); i++ {
