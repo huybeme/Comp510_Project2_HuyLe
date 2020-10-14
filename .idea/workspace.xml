@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="867e667c-248e-492f-b01d-163136dc8bc2" name="Default Changelist" comment="second commit, corrected prompt for userInput variable">
+      <change beforePath="$PROJECT_DIR$/SongData.go" beforeDir="false" afterPath="$PROJECT_DIR$/SongData.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SongGetter.go" beforeDir="false" afterPath="$PROJECT_DIR$/SongGetter.go" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Go File" />
+      </list>
+    </option>
+  </component>
+  <component name="GOROOT" path="C:\Users\HuyLe\go\go1.15.1" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1hyT5AGGYAskF74UJAaRupbXXc0" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DefaultGoTemplateProperty" value="Go File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="configurable.Global.GOPATH.is.expanded" value="true" />
+    <property name="configurable.Module.GOPATH.is.expanded" value="false" />
+    <property name="configurable.Project.GOPATH.is.expanded" value="true" />
+    <property name="go.import.settings.migrated" value="true" />
+    <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../GioScratch" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="go.sdk" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\HuyLe\go\src\Comp510_Project2_HuyLe" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Go Build.go build SongGetter.go">
+    <configuration name="go build Comp510_Project2_HuyLe" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="Comp510_Project2_HuyLe" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <filePath value="$PROJECT_DIR$/SongGetter.go" />
+      <package value="Comp510_Project2_HuyLe" />
+      <directory value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build SongGetter.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="Comp510_Project2_HuyLe" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$/SongGetter.go" />
+      <package value="Comp510_Project2_HuyLe" />
+      <directory value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build scratch.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="Comp510_Project2_HuyLe" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$/scratch.go" />
+      <package value="Comp510_Project2_HuyLe" />
+      <directory value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Go Build.go build SongGetter.go" />
+        <item itemvalue="Go Build.go build scratch.go" />
+        <item itemvalue="Go Build.go build Comp510_Project2_HuyLe" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="second commit, corrected prompt for userInput variable" />
+    <option name="LAST_COMMIT_MESSAGE" value="second commit, corrected prompt for userInput variable" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="313" y="245" key="#Go_Modules" timestamp="1602117076146">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="313" y="245" key="#Go_Modules/0.0.1536.824@0.0.1536.824" timestamp="1602117076146" />
+    <state x="414" y="272" key="EnvironmentVariablesDialog" timestamp="1602117073188">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="414" y="272" key="EnvironmentVariablesDialog/0.0.1536.824@0.0.1536.824" timestamp="1602117073188" />
+    <state x="816" y="126" key="FileChooserDialogImpl" timestamp="1602634896466">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824/1920.0.1280.680@0.0.1536.824" timestamp="1601419814600" />
+    <state x="816" y="126" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1602634896466" />
+    <state x="606" y="310" key="Github.ShareDialog" timestamp="1601315424118">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="606" y="310" key="Github.ShareDialog/0.0.1536.824@0.0.1536.824" timestamp="1601315424118" />
+    <state x="560" y="110" key="Github.UntrackedFilesDialog" timestamp="1601315447292">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="560" y="110" key="Github.UntrackedFilesDialog/0.0.1536.824@0.0.1536.824" timestamp="1601315447292" />
+    <state width="1493" height="139" key="GridCell.Tab.0.bottom" timestamp="1602635404934">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="139" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1602635404934" />
+    <state width="1493" height="139" key="GridCell.Tab.0.center" timestamp="1602635404934">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="139" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1602635404934" />
+    <state width="1493" height="139" key="GridCell.Tab.0.left" timestamp="1602635404934">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="139" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1602635404934" />
+    <state width="1493" height="139" key="GridCell.Tab.0.right" timestamp="1602635404934">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="139" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1602635404934" />
+    <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1602369169434">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="261" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1602369169434" />
+    <state width="1493" height="261" key="GridCell.Tab.1.center" timestamp="1602369169434">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="261" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1602369169434" />
+    <state width="1493" height="261" key="GridCell.Tab.1.left" timestamp="1602369169434">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="261" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1602369169434" />
+    <state width="1493" height="261" key="GridCell.Tab.1.right" timestamp="1602369169434">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="261" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1602369169434" />
+    <state x="253" y="77" key="SettingsEditor" timestamp="1602116161546">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="253" y="77" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1602116161546" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1601337036455">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1601337036455" />
+    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1602335177773">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1602335177773" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1602335596890">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1602335596890" />
+  </component>
+</project>
