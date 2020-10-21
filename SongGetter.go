@@ -1,15 +1,5 @@
 package main
 
-/*
-	Comp510
-	Project 2 part 1
-		Take in an input and use input for a search query. Pull data from API and decode.
-
-	Project 2 part 2
-		Take data from API and create GUI based window instead printing on console.
-
-*/
-
 import (
 	"encoding/json"
 	"fmt"
@@ -28,7 +18,9 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"strconv"
 	"strings"
+	"time"
 )
 
 //JSON structs start here - for whatever reason, SongData.go not being reached, get undefined error
@@ -43,17 +35,34 @@ type Response struct {
 }
 
 type Result struct {
-	ID   string `json:"id"`
+	ID   int    `json:"id"`
 	Name string `json:"name"`
+}
+
+type SimilarData struct {
+	Error    bool                      `json:"error"`
+	Message  string                    `json:"message,omitempty"`
+	Response map[string][]SimilarItems `json:"response"`
+}
+
+type SimilarItems struct {
+	Artist    string  `json:"artist_name"`
+	ArtistURL string  `json:"artist_url"`
+	ID        int     `json:"id"`
+	IndexID   int     `json:"index_id"`
+	Lyrics    string  `json:"lyrics"`
+	Percent   float32 `json:"percentage"`
+	Song      string  `json:"song_name"`
+	URL       string  `json:"song_url"`
 }
 
 //JASON structs end here
 
 // GUI structs start here
 type ListElement struct {
-	Element     widget.Clickable
-	Title       string
-	Description string
+	Element widget.Clickable
+	Title   string
+	ID      int
 }
 
 type ClassList struct {
@@ -62,23 +71,43 @@ type ClassList struct {
 	selected int
 }
 
+type SimilarElements struct {
+	Element widget.Clickable
+	Artist  string
+	Song    string
+	Similar []SimilarItems // might not need this also
+}
+
+type SimilarList struct {
+	list        layout.List
+	Items       SimilarElements
+	selectedNum int
+}
+
+//type LyricElements struct{
+//	Lyrics		[]string
+//}
+//
+//type LyricList struct{
+//	list 		layout.List
+//	Items		LyricElements
+//	selectedNum	int
+//}
 // GUI structs end here
 
 var listControl ClassList
 var songData SongData
+var similarControl SimilarList
+var appTheme *material.Theme
 
 func setupList(data SongData) {
-	for i, value := range data.Response.Result { // replace unused variable when description is available
+	for i, value := range data.Response.Result {
 		dashIndex := strings.Index(value.Name, "-")
 		song := value.Name[dashIndex+2:]
-		listControl.Items = append(listControl.Items, ListElement{Title: song, Description: string(i)})
-		listControl.list.Axis = layout.Vertical
-	}
-}
-
-func printData(data SongData) {
-	for i := 0; i < len(data.Response.Result); i++ {
-		fmt.Println(data.Response.Result[i].Name)
+		listControl.Items = append(listControl.Items, ListElement{Title: song, ID: data.Response.Result[i].ID})
+		if i == len(data.Response.Result)-1 {
+			fmt.Println("setupList complete")
+		}
 	}
 }
 
@@ -101,29 +130,61 @@ func querySearch(userInput string) SongData {
 	}
 	// decode []byte data into struct
 	var data SongData
-	json.Unmarshal(rawData, &data) // decode body of byte[] into interface
-
+	err = json.Unmarshal(rawData, &data) // decode body of byte[] into interface
+	fmt.Println("querySearch complete")
 	return data
 }
 
-func main() {
+func similarQuery(id int) []SimilarItems {
+	api := "https://searchly.asuarez.dev/api/v1/similarity/by_song"
+	similarURL := api + "?song_id=" + strconv.Itoa(id)
 
-	// maybe needs to be in eventLoop for searching directly on GUI
+	client := http.Client{
+		Timeout: 15 * time.Second,
+	}
+
+	response, err := client.Get(similarURL)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer response.Body.Close()
+	if response.StatusCode != 200 {
+		log.Fatal("Didn't get 200")
+	}
+	rawData, err := ioutil.ReadAll(response.Body)
+	if err != nil {
+		log.Fatal(err)
+	}
+	var simData SimilarData
+	json.Unmarshal(rawData, &simData)
+
+	var values []SimilarItems
+	for _, value := range simData.Response {
+		values = append(values, value...)
+	}
+	return values
+}
+
+func main() {
+	// search something
 	fmt.Println("Enter an artist or song name: ")
 	var userInput string
-	userInput = "cloud"
+	userInput = "angel"
 	//fmt.Scanln(&userInput)
+
+	// retrieve data from API and compile data into listControl
 	songData = querySearch(userInput)
 	setupList(songData)
-	printData(songData)
 
 	go startApp()
+	fmt.Println("GUI program started")
 	app.Main()
+
 }
 
 func startApp() {
 	defer os.Exit(0)
-	mainWindow := app.NewWindow(app.Size(unit.Value{V: 1400}, unit.Value{V: 400}))
+	mainWindow := app.NewWindow(app.Size(unit.Value{V: 1000}, unit.Value{V: 400}))
 	err := eventLoop(mainWindow)
 	if err != nil {
 		log.Fatal(err)
@@ -133,6 +194,7 @@ func startApp() {
 func eventLoop(mainWindow *app.Window) (err error) {
 	appTheme = material.NewTheme(gofont.Collection())
 	var operationsQ op.Ops
+
 	for {
 		event := <-mainWindow.Events()
 		switch eventType := event.(type) {
@@ -146,51 +208,75 @@ func eventLoop(mainWindow *app.Window) (err error) {
 	}
 }
 
-var (
-	//entryLine = &widget.Editor{			// maybe out of scope of proj 2 but maybe implement search button when theres free time.
-	//	SingleLine: true,
-	//	Submit: true,
-	//}
-	appTheme *material.Theme
-	//searchButton = new(widget.Clickable)
-)
-
 func drawGUI(gContext layout.Context, theme *material.Theme) layout.Dimensions {
-	//in := layout.UniformInset(unit.Dp(8))
+	listControl.list.Axis = layout.Vertical
+	similarControl.list.Axis = layout.Vertical
 
 	retLayout := layout.Flex{Axis: layout.Horizontal}.Layout(gContext,
-		layout.Rigid( // clickable
-			func(gtx layout.Context) layout.Dimensions {
-				border := widget.Border{Width: unit.Px(100)}
-				return border.Layout(gtx, drawList(gContext, theme))
-			}),
-		layout.Flexed(1, drawDisplay(gContext, theme)), // description
-	//layout.Rigid(												// entry bar
-	//	func(gtx layout.Context) layout.Dimensions {
-	//		e := material.Editor(appTheme, entryLine, "Enter a Search Entry")
-	//		e.Font.Style = text.Italic
-	//		border := widget.Border{Color: color.RGBA{A: 0xff}, CornerRadius: unit.Dp(8), Width: unit.Px(5)}
-	//		return border.Layout(gtx, func(gtx layout.Context) layout.Dimensions {
-	//			return layout.UniformInset(unit.Dp(8)).Layout(gtx, e.Layout)
-	//		})
-	//	}),
-	//layout.Rigid(func(gtx layout.Context) layout.Dimensions {	// button
-	//	return in.Layout(gtx, func(gtx layout.Context) layout.Dimensions {
-	//		for searchButton.Clicked() {
-	//			fmt.Println("you clicked the button")
-	//		}
-	//		return material.Button(appTheme, searchButton, "Search").Layout(gtx)
-	//	})
-	//}),
+		layout.Rigid(drawList(gContext, theme)),
+		layout.Rigid(drawSimilarList(gContext, theme)),
+		//layout.Flexed(1, drawLyrics(gContext, theme)),
 	)
 	return retLayout
 }
 
-func drawDisplay(gContext layout.Context, theme *material.Theme) layout.Widget {
-	return func(ctx layout.Context) layout.Dimensions {
-		displayText := material.Body1(theme, listControl.Items[listControl.selected].Title) // change output here to description
-		return layout.Center.Layout(ctx, displayText.Layout)                                // description currently empty
+//func drawLyrics(gContext layout.Context, theme *material.Theme) layout.Widget{
+//	return func(gtx layout.Context) layout.Dimensions {
+//		gContext.Constraints.Max.Y = 100
+//		return similarControl.list.Layout(gtx, len(similarControl.Items.Similar), selectLyrics)
+//	}
+//}
+//
+//func selectLyrics(gtx layout.Context, selectedItem int) layout.Dimensions{
+//	userSelection := &similarControl.Items
+//	var editor = new(widget.Editor)
+//	if userSelection.Element.Clicked(){
+//		similarControl.selectedNum = selectedItem
+//	}
+//	return material.Editor(appTheme, editor, userSelection.Similar[selectedItem].Lyrics).Layout(gtx)
+//}
+
+func drawSimilarList(gContext layout.Context, theme *material.Theme) layout.Widget {
+	return func(gtx layout.Context) layout.Dimensions {
+		return similarControl.list.Layout(gtx, len(similarControl.Items.Similar), selectSimilarItem)
 	}
+}
+
+func selectSimilarItem(graphicsContext layout.Context, selectedItem int) layout.Dimensions {
+	userSelection := &similarControl.Items
+	if userSelection.Element.Clicked() {
+		similarControl.selectedNum = selectedItem
+		fmt.Println("similar data (song name): " + userSelection.Similar[selectedItem].Song + " selected")
+	}
+	var itemHeight int
+	return layout.Stack{Alignment: layout.NW}.Layout(graphicsContext,
+		layout.Stacked(
+			func(gtx layout.Context) layout.Dimensions {
+				dimensions := material.Clickable(gtx, &userSelection.Element,
+					func(gtx layout.Context) layout.Dimensions {
+						return layout.UniformInset(unit.Sp(6)).
+							Layout(gtx, material.H6(appTheme,
+								"Artist: "+userSelection.Similar[selectedItem].Artist+"\nSong: "+userSelection.Similar[selectedItem].Song).Layout)
+					})
+				itemHeight = dimensions.Size.Y
+				return dimensions
+			}),
+		layout.Stacked(
+			func(gtx layout.Context) layout.Dimensions {
+				if similarControl.selectedNum != selectedItem {
+					return layout.Dimensions{}
+				}
+				paint.ColorOp{Color: appTheme.Color.Hint}.Add(gtx.Ops)
+				highlightWidth := gtx.Px(unit.Dp(4))
+				paint.PaintOp{Rect: f32.Rectangle{
+					Max: f32.Point{
+						X: float32(highlightWidth),
+						Y: float32(itemHeight),
+					}}}.Add(gtx.Ops)
+				return layout.Dimensions{Size: image.Point{X: highlightWidth, Y: itemHeight}}
+			},
+		),
+	)
 }
 
 func drawList(gContext layout.Context, theme *material.Theme) layout.Widget {
@@ -201,8 +287,11 @@ func drawList(gContext layout.Context, theme *material.Theme) layout.Widget {
 
 func selectItem(graphicsContext layout.Context, selectedItem int) layout.Dimensions {
 	userSelection := &listControl.Items[selectedItem]
+
 	if userSelection.Element.Clicked() {
 		listControl.selected = selectedItem
+		similarControl.Items.Similar = similarQuery(listControl.Items[selectedItem].ID)
+		fmt.Println("song data: " + userSelection.Title + " selected")
 	}
 	var itemHeight int
 	return layout.Stack{Alignment: layout.W}.Layout(graphicsContext,
@@ -217,18 +306,19 @@ func selectItem(graphicsContext layout.Context, selectedItem int) layout.Dimensi
 				return dimensions
 			}),
 		layout.Stacked(
-			func(gtx layout.Context) layout.Dimensions {
+			func(gtx layout.Context) layout.Dimensions { //another one of those 'glorious anonymous functions
 				if listControl.selected != selectedItem {
-					return layout.Dimensions{}
+					return layout.Dimensions{} //if not selected - don't do anything special
 				}
-				paint.ColorOp{Color: appTheme.Color.Primary}.Add(gtx.Ops)
-				highlightWidth := gtx.Px(unit.Dp(4))
-				paint.PaintOp{Rect: f32.Rectangle{
+				paint.ColorOp{Color: appTheme.Color.Primary}.Add(gtx.Ops) //add a paint operation
+				highlightWidth := gtx.Px(unit.Dp(4))                      //lets make it 4 device independent pixals
+				paint.PaintOp{Rect: f32.Rectangle{                        //paint a rectangle using 32 bit floats
 					Max: f32.Point{
 						X: float32(highlightWidth),
 						Y: float32(itemHeight),
 					}}}.Add(gtx.Ops)
 				return layout.Dimensions{Size: image.Point{X: highlightWidth, Y: itemHeight}}
-			}),
+			},
+		),
 	)
 }
