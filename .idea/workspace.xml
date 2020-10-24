@@ -19,8 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="867e667c-248e-492f-b01d-163136dc8bc2" name="Default Changelist" comment="third commit, submission of project 2 part 2&#10;rather than print data onto console, put it into a GUI as clickable widgets. also removed artist from the name.">
-      <change afterPath="$PROJECT_DIR$/ReadMe.txt" afterDir="false" />
+    <list default="true" id="867e667c-248e-492f-b01d-163136dc8bc2" name="Default Changelist" comment="fourth commit, submission of project 2 part 3">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SongGetter.go" beforeDir="false" afterPath="$PROJECT_DIR$/SongGetter.go" afterDir="false" />
     </list>
@@ -56,7 +55,7 @@
     <property name="configurable.Project.GOPATH.is.expanded" value="true" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../GioScratch" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -125,7 +124,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="second commit, corrected prompt for userInput variable" />
     <MESSAGE value="third commit, submission of project 2 part 2&#10;rather than print data onto console, put it into a GUI as clickable widgets. also removed artist from the name." />
-    <option name="LAST_COMMIT_MESSAGE" value="third commit, submission of project 2 part 2&#10;rather than print data onto console, put it into a GUI as clickable widgets. also removed artist from the name." />
+    <MESSAGE value="fourth commit, submission of project 2 part 3" />
+    <option name="LAST_COMMIT_MESSAGE" value="fourth commit, submission of project 2 part 3" />
   </component>
   <component name="WindowStateProjectService">
     <state x="313" y="245" key="#Go_Modules" timestamp="1602117076146">
@@ -149,22 +149,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="560" y="110" key="Github.UntrackedFilesDialog/0.0.1536.824@0.0.1536.824" timestamp="1601315447292" />
-    <state width="750" height="204" key="GridCell.Tab.0.bottom" timestamp="1603247653869">
+    <state width="1493" height="204" key="GridCell.Tab.0.bottom" timestamp="1603248060452">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="750" height="204" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1603247653869" />
-    <state width="750" height="204" key="GridCell.Tab.0.center" timestamp="1603247653868">
+    <state width="1493" height="204" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1603248060452" />
+    <state width="1493" height="204" key="GridCell.Tab.0.center" timestamp="1603248060452">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="750" height="204" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1603247653868" />
-    <state width="750" height="204" key="GridCell.Tab.0.left" timestamp="1603247653868">
+    <state width="1493" height="204" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1603248060452" />
+    <state width="1493" height="204" key="GridCell.Tab.0.left" timestamp="1603248060452">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="750" height="204" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1603247653868" />
-    <state width="750" height="204" key="GridCell.Tab.0.right" timestamp="1603247653868">
+    <state width="1493" height="204" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1603248060452" />
+    <state width="1493" height="204" key="GridCell.Tab.0.right" timestamp="1603248060452">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="750" height="204" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1603247653868" />
+    <state width="1493" height="204" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1603248060452" />
     <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1602369169434">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -185,10 +185,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="253" y="77" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1602116161546" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1602635705153">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1603248016139">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1602635705153" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1603248016139" />
     <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1602335177773">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

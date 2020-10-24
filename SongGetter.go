@@ -169,8 +169,8 @@ func main() {
 	// search something
 	fmt.Println("Enter an artist or song name: ")
 	var userInput string
-	userInput = "angel"
-	//fmt.Scanln(&userInput)
+	//userInput = "angel"
+	fmt.Scanln(&userInput)
 
 	// retrieve data from API and compile data into listControl
 	songData = querySearch(userInput)
